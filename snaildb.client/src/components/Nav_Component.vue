@@ -69,7 +69,7 @@
                         Wiki
                     </div>
                 </a>
-                <a href="https://github.com/T1nnyman/SnailDatabase" target="_blank" class="group">
+                <a href="https://github.com/T1nnyman/SnailDB" target="_blank" class="group">
                     <div
                         class="flex flex-row gap-2 rounded-xl border-2 border-gray-400 pb-1 pl-2 pr-2 pt-1 font-bold text-gray-400 group-hover:border-white group-hover:text-white">
                         <svg
@@ -134,7 +134,7 @@
                 <a href="https://supersnail.wiki.gg/wiki/Super_Snail_Wiki" @click="toggleMenu" target="_blank" class="text-[#b0bac5] hover:text-white hover:underline hover:scale-105 transition duration-250 transform">
                     Wiki
                 </a>
-                <a href="https://github.com/T1nnyman/SnailDatabase" @click="toggleMenu" target="_blank" class="text-[#b0bac5] hover:text-white hover:underline hover:scale-105 transition duration-250 transform">
+                <a href="https://github.com/T1nnyman/SnailDB" @click="toggleMenu" target="_blank" class="text-[#b0bac5] hover:text-white hover:underline hover:scale-105 transition duration-250 transform">
                     GitHub
                 </a>
             </nav>
