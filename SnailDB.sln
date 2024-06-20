@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnailDB.Server", "SnailDB.Server\SnailDB.Server.csproj", "{B858E664-A9CC-4AAC-B999-3A74E68596D8}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "snaildb.client", "snaildb.client\snaildb.client.esproj", "{F3BB1268-7FF0-4D98-9C2D-9ECA15ECFBDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B858E664-A9CC-4AAC-B999-3A74E68596D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B858E664-A9CC-4AAC-B999-3A74E68596D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B858E664-A9CC-4AAC-B999-3A74E68596D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B858E664-A9CC-4AAC-B999-3A74E68596D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3BB1268-7FF0-4D98-9C2D-9ECA15ECFBDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3BB1268-7FF0-4D98-9C2D-9ECA15ECFBDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3BB1268-7FF0-4D98-9C2D-9ECA15ECFBDB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F3BB1268-7FF0-4D98-9C2D-9ECA15ECFBDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3BB1268-7FF0-4D98-9C2D-9ECA15ECFBDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3BB1268-7FF0-4D98-9C2D-9ECA15ECFBDB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1DE7A5AE-60C7-4BBE-A669-BD51DFEDEF62}
+	EndGlobalSection
+EndGlobal
