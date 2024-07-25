@@ -186,10 +186,21 @@ namespace SnailDB.Server.Services {
             string content = "";
             HtmlNode? spanNode = doc.DocumentNode.SelectSingleNode($"//span[@id='{id}']");
             HtmlNode? h2Node = spanNode?.ParentNode;
-            HtmlNode? pNode = h2Node?.SelectSingleNode("./following-sibling::p");
-            // Sets content to the inner text of the <p> node if found
-            if (pNode != null)
-                content = pNode.InnerText.Trim().Replace("&amp;", "&").Replace("&gt;", ">");
+            HtmlNode? node = h2Node?.SelectSingleNode("./following-sibling");
+            // If the node is a paragraph, return the inner text, otherwise return the inner text of each list item separated by a comma
+            if (node != null && node.Name == "p")
+                content = node.InnerText.Trim().Replace("&amp;", "&").Replace("&gt;", ">");
+            else if (node != null && node.Name == "ul") {
+                var liNodes = node.SelectNodes(".//li");
+                if (liNodes != null) {
+                    foreach (var liNode in liNodes) {
+                        if (!string.IsNullOrEmpty(content)) {
+                            content += ", ";
+                        }
+                        content += liNode.InnerText.Trim().Replace("&amp;", "&").Replace("&gt;", ">");
+                    }
+                }
+            }
 
             return content;
         }
@@ -257,9 +268,12 @@ namespace SnailDB.Server.Services {
             string imagePath = GetImageUri(imageUrl);
             string directory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "assets", "relics", Path.GetDirectoryName(imagePath) ?? string.Empty);
             string fullImagePath = Path.Combine(directory, Path.GetFileName(imagePath));
-            Directory.CreateDirectory(directory);
 
             try {
+                // Ensure the directory exists
+                if (!Directory.Exists(directory)) {
+                    Directory.CreateDirectory(directory);
+                }
                 if (!File.Exists(fullImagePath)) {
                     var response = await client.GetAsync(imageUrl);
                     if (response.IsSuccessStatusCode) {

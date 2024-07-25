@@ -1,6 +1,5 @@
 # Base Image for ASP.NET Core runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER app
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
@@ -33,4 +32,22 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 COPY SnailDB.Server/Data/SnailDB.db /app/Data/SnailDB.db
+
+
+# Ensure the directories are writable
+RUN mkdir -p /app/wwwroot/assets/relics && chmod -R 777 /app/wwwroot/assets/relics
+RUN chmod -R 777 /app/Data
+
+# Copy the HTTPS Certificate
+COPY SnailDB.Server/certificate.pfx /https/certificate.pfx
+
+# Ensure the application is running as a non-root user
+RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
+
+USER appuser
+
+ENV ASPNETCORE_URLS="https://+:8081;http://+:8080"
+ENV ASPNETCORE_Kestrel__Certificates__Default__Password="Tinman1234"
+ENV ASPNETCORE_Kestrel__Certificates__Default__Path="/https/certificate.pfx"
+
 ENTRYPOINT ["dotnet", "SnailDB.Server.dll"]
