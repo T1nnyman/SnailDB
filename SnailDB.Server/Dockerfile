@@ -35,7 +35,6 @@ COPY SnailDB.Server/Data/SnailDB.db /app/Data/SnailDB.db
 
 
 # Ensure the directories are writable
-RUN mkdir -p /app/wwwroot/assets/relics && chmod -R 777 /app/wwwroot/assets/relics
 RUN chmod -R 777 /app/Data
 
 # Copy the HTTPS Certificate

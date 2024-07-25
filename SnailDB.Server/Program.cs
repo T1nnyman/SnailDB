@@ -21,6 +21,8 @@ app.UseStaticFiles();
 }*/
 app.UseHttpsRedirection();
 
+// For use in local non Docker environment
+
 /*using (var scope = app.Services.CreateScope()) {
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<AppDbContext>();
