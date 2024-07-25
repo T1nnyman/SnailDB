@@ -186,7 +186,7 @@ namespace SnailDB.Server.Services {
             string content = "";
             HtmlNode? spanNode = doc.DocumentNode.SelectSingleNode($"//span[@id='{id}']");
             HtmlNode? h2Node = spanNode?.ParentNode;
-            HtmlNode? node = h2Node?.SelectSingleNode("./following-sibling");
+            HtmlNode? node = h2Node?.NextSibling.NextSibling;
             // If the node is a paragraph, return the inner text, otherwise return the inner text of each list item separated by a comma
             if (node != null && node.Name == "p")
                 content = node.InnerText.Trim().Replace("&amp;", "&").Replace("&gt;", ">");

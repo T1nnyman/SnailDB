@@ -31,11 +31,17 @@ RUN dotnet publish "./SnailDB.Server.csproj" -c $BUILD_CONFIGURATION -o /app/pub
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY SnailDB.Server/Data/SnailDB.db /app/Data/SnailDB.db
 
+# Copy the database files to the volume directory
+COPY SnailDB.Server/Data/SnailDB.db /app/Data/SnailDB.db
+COPY SnailDB.Server/Data/SnailDB.db-shm /app/Data/SnailDB.db-shm
+COPY SnailDB.Server/Data/SnailDB.db-wal /app/Data/SnailDB.db-wal
 
 # Ensure the directories are writable
 RUN chmod -R 777 /app/Data
+
+# Define a volume for the database files
+VOLUME /app/Data
 
 # Copy the HTTPS Certificate
 COPY SnailDB.Server/certificate.pfx /https/certificate.pfx
